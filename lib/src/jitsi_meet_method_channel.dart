@@ -210,6 +210,26 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
     });
   }
 
+  /// Enters Picture-in-Picture mode.
+  @override
+  Future<MethodResponse> enterPiP() async {
+    return await methodChannel
+        .invokeMethod<String>('enterPiP')
+        .then(
+          (message) => MethodResponse(
+            isSuccess: true,
+            message: message,
+          ),
+        )
+        .catchError(
+          (error) => MethodResponse(
+            isSuccess: false,
+            message: error.toString(),
+            error: error,
+          ),
+        );
+  }
+
   void _initialize() {
     eventChannel.receiveBroadcastStream().listen((message) {
       final data = message['data'];
@@ -286,8 +306,8 @@ class MethodChannelJitsiMeet extends JitsiMeetPlatform {
           _listener?.readyToClose?.call();
           break;
 
-        case "customOverflowMenuButtonPressed":
-          _listener?.customOverflowMenuButtonPressed?.call(data["id"]);
+        case "customButtonPressed":
+          _listener?.customButtonPressed?.call(data["id"]);
           break;
       }
     }).onError((error) {

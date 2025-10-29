@@ -49,6 +49,7 @@ class JitsiMeetPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
       "sendChatMessage" -> sendChatMessage(call, result)
       "closeChat" -> closeChat(call, result)
       "retrieveParticipantsInfo" -> retrieveParticipantsInfo(call, result)
+      "enterPiP" -> enterPiP(call, result)
       else -> result.notImplemented()
     }
   }
@@ -97,6 +98,21 @@ class JitsiMeetPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
         when (value) {
           is Boolean -> setConfigOverride(key, value)
           is Int -> setConfigOverride(key, value)
+          is Map<*, *> -> {
+            val bundle = Bundle()
+            value.forEach { (k, v) ->
+              when (v) {
+                is Boolean -> bundle.putBoolean(k.toString(), v)
+                is Int -> bundle.putInt(k.toString(), v)
+                is Long -> bundle.putLong(k.toString(), v)
+                is Double -> bundle.putDouble(k.toString(), v)
+                is Float -> bundle.putFloat(k.toString(), v)
+                is String -> bundle.putString(k.toString(), v)
+                else -> bundle.putString(k.toString(), v.toString())
+              }
+            }
+            setConfigOverride(key, bundle)
+          }
           is Array<*> -> setConfigOverride(key, value as Array<out String>)
           is List<*> -> {
             if (value.isNotEmpty() && value[0] is Map<*, *>) {
@@ -109,6 +125,9 @@ class JitsiMeetPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
                 bundles.add(bundle)
               }
               setConfigOverride(key, bundles)
+            } else if (value.isNotEmpty() && value[0] is String) {
+              val stringArray = value.map { it.toString() }.toTypedArray()
+              setConfigOverride(key, stringArray)
             } else {
               setConfigOverride(key, value.toString())
             }
@@ -192,5 +211,11 @@ class JitsiMeetPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
     val retrieveParticipantsInfoIntent: Intent = Intent("org.jitsi.meet.RETRIEVE_PARTICIPANTS_INFO");
     LocalBroadcastManager.getInstance(activity!!.applicationContext).sendBroadcast(retrieveParticipantsInfoIntent)
     result.success("Successfully retrieved participants info")
+  }
+
+  private fun enterPiP(call: MethodCall, result: Result) {
+    val enterPiPIntent = Intent("org.jitsi.meet.ENTER_PICTURE_IN_PICTURE");
+    LocalBroadcastManager.getInstance(activity!!.applicationContext).sendBroadcast(enterPiPIntent)
+    result.success("Successfully entered PiP")
   }
 }
