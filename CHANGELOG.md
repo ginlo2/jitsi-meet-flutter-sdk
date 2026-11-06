@@ -1,3 +1,39 @@
+## 13.3.0 
+
+* chore(deps): update native sdks to 13.3.0 [8303f04](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/8303f04cc6336c4a75d75f9c8b0213aa46a004c1).
+* iOS uses JitsiMeetSDK 13.3.1 (13.3.0 with the JitsiWebRTC 155 dependency fix); Android uses jitsi-meet-sdk 13.3.0.
+
+## 13.2.0 
+
+* chore(deps): update native sdks to 13.2.0 [158a2b5](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/158a2b57d448c49412186713c9e6048984a233cc).
+
+## 13.1.1 
+
+* chore(deps): update native sdks to 13.1.1 [049e1b9](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/049e1b983cbb9fdb3ea7abaa43b32676fbc1b93c).
+
+## 13.1.0 
+
+* chore(deps): update native sdks to 13.1.0 [473ff73](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/473ff73fd2aa3df881b82ab2a6e59392e118d5f4).
+
+## 13.0.0 
+
+* chore(deps): update native sdks to 13.0.0 [f674d46](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/f674d46a207a904ba51c2f2bb5d85885dba19bd3).
+
+## 12.1.5 
+
+* chore(deps): update native sdks to 12.1.5 [2d640db](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/2d640db28168fda123f95bde654eb74afef63dc6).
+
+## 12.1.3 
+
+* chore(deps): update native sdks to 12.1.3 [3f402ce](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/3f402ce24bfe8a9cb3b4ae2539d5ebfaa1a614d7).
+
+## 12.1.1 
+
+* Fix NullPointerException and Android Build Conflicts (#161) [f7d610f](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/f7d610f0342ba70c2f57eef12aae6ea0e22b95e2).
+* iOS UIScene compatibility. [6186e11](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/6186e11a4eee59d66f5ff5d2e833599670a3b18d).
+* Pin GitHub Actions to SHA hashes (#162) [994dd92](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/994dd9268480b1b93ae29e7a775191bf6623a5b2).
+* Added the breakout Rooms flag in the features_flags (#149) [208814b](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/208814b2d6b875eab9ad122cf379d4c32f4cda40).
+
 ## 11.6.0 
 
 * chore(deps): update native sdks to 11.6.0 [9fd1a6e](https://github.com/jitsi/jitsi-meet-flutter-sdk/commit/9fd1a6ecf6b790ee8e442d561ee92beea5c66734).
